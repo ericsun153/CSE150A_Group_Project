@@ -36,7 +36,13 @@ This Blackjack AI agent is primarily a **Utility-Based Agent**, the reasons are:
 *   **Probabilistic Agent:** The agent explicitly reasons about probabilities (different actions) to make decisions. When the agent chooses the action with the highest Q-value, the Q-values themselves represent the agent's belief about the expected return, which is influenced by the probabilities inherent in the environment. The agent might "believe" that standing has a higher expected reward in a particular state, but there's still a chance that hitting could lead to a better outcome due to the random card draw.
 
 ## Dataset Exploration
-TBD
+[Link to EDA notebook](https://github.com/ericsun153/CSE150A_Group_Project/blob/Milestone3/EDA.ipynb)
+
+![](fig/avg%20win%20vs.%20inital%20hand.png)
+
+![](fig/output.png)
+
+![](fig/output2.png)
 
 ## Probabilistic Modeling and the Agent's Setup
 * State Definition: We first define what the agent "sees" or "knows" about the game at any given moment. This is the state. In our case, the state consists of:
@@ -55,7 +61,7 @@ TBD
 * Q-Table Initialization: The agent's "memory" is stored in a Q-table. This table is initialized with zeros. It's a dictionary-like structure that maps each possible state-action pair to an estimated Q-value. We use a defaultdict so we don't have to pre-populate the table.
 
 ## Training the Model
-[Link to our code for training process](https://github.com/yul243/CSE150A_Group_Project/blob/Milestone3/Blackjack_qlearning_agent.ipynb)
+[Link to our code for training process](https://github.com/ericsun153/CSE150A_Group_Project/blob/Milestone3/Blackjack_qlearning_agent.ipynb)
 1. Iterate Through Episodes.
 2. Observe the State: For each hand in the training data, the agent observes the current state (player hand, dealer upcard, etc.).
 3. Choose an Action (Epsilon-Greedy): The agent uses an epsilon-greedy policy to choose an action:
@@ -69,7 +75,7 @@ TBD
 Q(state, action) = Q(state, action) + alpha * (reward + gamma * max(Q(next_state, all_actions)) - Q(state, action))
 ```
 10. At last we store our Q-table into a pickle file and easier for future use.
-[Link to our pkl file](https://github.com/yul243/CSE150A_Group_Project/blob/Milestone3/blackjack_q_table.pkl)
+[Link to our pkl file](https://github.com/ericsun153/CSE150A_Group_Project/blob/Milestone3/blackjack_q_table.pkl)
 
 ## Evaluating the Model
 1. Iterate Through Evaluation Hands: The agent processes a set of blackjack hands.
@@ -84,8 +90,8 @@ We regard the following as the Evaluation Metrics:
 - Comparison to Baseline: Compare the agent's performance to a basic strategy player or a random player.
 
 We get the following graphs as a process shower:
-![Line plot of Rewards per Hand](line_plot.png)
-![Bar plot of Rewards per Hand](barplot.png)
+![Line plot of Rewards per Hand](fig/line_plot.png)
+![Bar plot of Rewards per Hand](fig/barplot.png)
 
 ### Conclusion of the Reinforcement Learning Model
 Our initial evaluation of the trained reinforcement learning agent, after the specified number of training episodes, indicates a promising outcome. The observed positive average reward of 0.0325 per hand suggests that the agent has successfully learned a strategy that allows it to generate a small profit over time. Specifically, with a starting bet of 1 unit per hand, we can expect an average gain of 0.0325 units for each hand played. This translates to an anticipated profit of 3.25 units for every 100 hands. This positive expectation signifies that the agent is winning slightly more often or with higher payouts than it is losing, which is a positive starting point in the complex game of Blackjack.
