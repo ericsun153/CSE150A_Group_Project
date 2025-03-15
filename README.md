@@ -88,12 +88,13 @@ We get the following graphs as a process shower:
 ![Bar plot of Rewards per Hand](barplot.png)
 
 ### Conclusion of the Reinforcement Learning Model
-TBD
+Our initial evaluation of the trained reinforcement learning agent, after the specified number of training episodes, indicates a promising outcome. The observed positive average reward of 0.0325 per hand suggests that the agent has successfully learned a strategy that allows it to generate a small profit over time. Specifically, with a starting bet of 1 unit per hand, we can expect an average gain of 0.0325 units for each hand played. This translates to an anticipated profit of 3.25 units for every 100 hands. This positive expectation signifies that the agent is winning slightly more often or with higher payouts than it is losing, which is a positive starting point in the complex game of Blackjack.
 
-Notes: The average reward is positive (0.0325) means that the agent is making a small profit per hand. This is a good starting point. The agent is winning slightly more than it's losing. Since the starting bet is 1, this means that for every 100 hands, our agent is expected to win 3.25 on top of that one bet (which is a promising start lol).
+However, it's important to acknowledge that this is an early result based on a limited number of evaluation hands. Further, the agent's performance and the robustness of this conclusion would benefit from more extensive training and evaluation. Nevertheless, the current positive average reward provides a solid foundation for future improvements and suggests that the Q-learning approach is effectively capturing some advantageous Blackjack strategies.
 
 
 ### Potential Improvements
-TBD
-
-Notes: May talk about the gpu resource, we need more episodes(iterations) to make the agent stronger. Now it's 100, can be maybe 5000-10000 episodes. Moreover, can talk about parameter tuning.
+1. Increased Training Episodes: The current training was conducted with a limited number of episodes (e.g., 100 in the provided code and 1000 for evaluation). Increasing the number of training iterations significantly (potentially to tens or hundreds of thousands of episodes) would expose the agent to a wider range of game scenarios. This increased experience can lead to a more refined Q-table with more accurate value estimations for various state-action pairs, ultimately resulting in a stronger and more consistent strategy.
+2. GPU Resource Utilization: Now the computing resource is limited, 100 episodes still need about half an hour to train, we may increase the number of episodes to make the Q-table more robust if GPU resources increased.
+3. Hyperparameter Tuning: The performance of the Q-learning algorithm is sensitive to the choice of hyperparameters, such as the learning rate (alpha), the discount factor (gamma), and the epsilon decay schedule. Systematically tuning these parameters through techniques like grid search or more advanced optimization algorithms could lead to significant improvements in the agent's learning speed and final performance.
+4. Expanded State and Action Spaces: The current agent operates with a relatively simplified state and action space (only Hit and Stand). Expanding these could allow for more sophisticated strategies. For instance, incorporating actions like Double Down, Split, and Surrender would make the agent's decision-making more comprehensive, and including more granular information in the state, such as the number of cards the player holds or more detailed levels of the true count, might enable the agent to make more informed decisions in specific situations.
