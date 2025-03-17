@@ -65,8 +65,8 @@ This Blackjack AI agent is primarily a **Utility-Based Agent**, the reasons are:
 1. Iterate Through Episodes.
 2. Observe the State: For each hand in the training data, the agent observes the current state (player hand, dealer upcard, etc.).
 3. Choose an Action (Epsilon-Greedy): The agent uses an epsilon-greedy policy to choose an action:
-4. With probability epsilon (the exploration rate), the agent chooses a random action (either Hit or Stand).
-5. With probability 1 - epsilon, the agent chooses the action that has the highest estimated Q-value in the Q-table for the current state. This is to exploit its current knowledge.
+   - With probability epsilon (the exploration rate), the agent chooses a random action (either Hit or Stand).
+   - With probability 1 - epsilon, the agent chooses the action that has the highest estimated Q-value in the Q-table for the current state. This is to exploit its current knowledge.
 6. Check for valid actions: Check for valid actions based on the rules
 7. Take the Action: The agent "takes" the action and receives a reward based on the outcome of the hand.
 8. Observe the Next State: The agent observes the next state (the new player hand, if it hit, or the end of the hand).
@@ -79,10 +79,10 @@ Q(state, action) = Q(state, action) + alpha * (reward + gamma * max(Q(next_state
 
 ## Evaluating the Model
 1. Iterate Through Evaluation Hands: The agent processes a set of blackjack hands.
-Observe the State: The agent observes the current state.
-2. Choose the Best Action: The agent chooses the action with the highest Q-value in the Q-table for the current state. There's no random exploration during evaluation.
-3. Take the Action: The agent "takes" the action and receives a reward.
-4. Calculate the Average Reward: The total reward is calculated over the evaluation hands, and the average reward per hand is computed.
+2. Observe the State: The agent observes the current state.
+3. Choose the Best Action: The agent chooses the action with the highest Q-value in the Q-table for the current state. There's no random exploration during evaluation.
+4. Take the Action: The agent "takes" the action and receives a reward.
+5. Calculate the Average Reward: The total reward is calculated over the evaluation hands, and the average reward per hand is computed.
 
 We regard the following as the Evaluation Metrics:
 - Average Reward per Hand: This is the primary metric. It indicates the agent's average profit or loss per hand. A positive average reward means the agent is making a profit.
